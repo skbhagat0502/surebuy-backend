@@ -7,6 +7,7 @@ import { NODE_ENV } from "./constants.js";
 import { errorMiddleware } from "./middleware/error.js";
 import dotenv from "dotenv";
 import cors from "cors";
+import { ORIGIN } from "./constants.js";
 
 // Config
 if (NODE_ENV !== "PRODUCTION") {
@@ -19,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 app.use(
   cors({
-    origin: "https://dapper-valkyrie-b91a76.netlify.app",
+    origin: ORIGIN,
     credentials: true,
   })
 );
