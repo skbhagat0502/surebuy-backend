@@ -6,6 +6,7 @@ import fileUpload from "express-fileupload";
 import { NODE_ENV } from "./constants.js";
 import { errorMiddleware } from "./middleware/error.js";
 import dotenv from "dotenv";
+import cors from "cors";
 
 // Config
 if (NODE_ENV !== "PRODUCTION") {
@@ -16,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
-
+app.use(cors());
 // Route Imports
 import model from "./routes/modelRoute.js";
 import user from "./routes/userRoute.js";
