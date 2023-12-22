@@ -7,7 +7,12 @@ import { NODE_ENV } from "./constants.js";
 import { errorMiddleware } from "./middleware/error.js";
 import dotenv from "dotenv";
 import cors from "cors";
-
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
 // Config
 if (NODE_ENV !== "PRODUCTION") {
   dotenv.config({ path: "backend/config/config.env" });
