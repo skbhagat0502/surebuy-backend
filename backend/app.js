@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 app.use(
   cors({
-    origin: ORIGIN,
+    origin: `${ORIGIN}`,
     credentials: true,
   })
 );
