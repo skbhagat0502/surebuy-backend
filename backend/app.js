@@ -20,6 +20,7 @@ app.use(fileUpload());
 app.use(
   cors({
     origin: "https://dapper-valkyrie-b91a76.netlify.app",
+    credentials: true,
   })
 );
 // Route Imports
