@@ -7,15 +7,7 @@ import { NODE_ENV } from "./constants.js";
 import { errorMiddleware } from "./middleware/error.js";
 import dotenv from "dotenv";
 import cors from "cors";
-app.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://dapper-valkyrie-b91a76.netlify.app/"
-  );
-  res.setHeader("Access-Control-Allow-Methods", "*");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
+
 // Config
 if (NODE_ENV !== "PRODUCTION") {
   dotenv.config({ path: "backend/config/config.env" });
@@ -25,7 +17,11 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://dapper-valkyrie-b91a76.netlify.app",
+  })
+);
 // Route Imports
 import model from "./routes/modelRoute.js";
 import user from "./routes/userRoute.js";
