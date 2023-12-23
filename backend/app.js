@@ -6,7 +6,6 @@ import fileUpload from "express-fileupload";
 import { NODE_ENV } from "./constants.js";
 import { errorMiddleware } from "./middleware/error.js";
 import dotenv from "dotenv";
-import cors from "cors";
 import { ORIGIN } from "./constants.js";
 
 // Config
@@ -18,13 +17,12 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
-app.use(
-  cors({
-    origin: `${ORIGIN}`,
-    credentials: true,
-    allowedHeaders,
-  })
-);
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", ORIGIN);
+  res.setHeader("Access-Control-Allow-Methods", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
 // Route Imports
 import model from "./routes/modelRoute.js";
 import user from "./routes/userRoute.js";
