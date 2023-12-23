@@ -20,7 +20,10 @@ app.use(fileUpload());
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", ORIGIN);
   res.setHeader("Access-Control-Allow-Methods", "*");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept"
+  );
   res.setHeader("Access-Control-Allow-Credentials", true);
   next();
 });
