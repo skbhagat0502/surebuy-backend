@@ -8,6 +8,7 @@ const sendToken = (user, statusCode, res) => {
     secure: true,
     sameSite: "none",
     path: "/",
+    domain: ORIGIN,
   };
 
   res.status(statusCode).cookie("token", token, options).json({
