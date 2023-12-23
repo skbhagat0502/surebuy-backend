@@ -22,6 +22,7 @@ app.use(
   cors({
     origin: `${ORIGIN}`,
     credentials: true,
+    allowedHeaders,
   })
 );
 // Route Imports
