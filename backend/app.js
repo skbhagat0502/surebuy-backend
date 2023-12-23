@@ -24,6 +24,7 @@ app.use(
     credentials: true,
     methods: "*",
     allowedHeaders: "Content-Type,Authorization",
+    exposedHeaders: "Set-Cookie",
   })
 );
 app.use((req, res, next) => {
