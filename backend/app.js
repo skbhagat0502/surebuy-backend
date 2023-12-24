@@ -20,12 +20,13 @@ app.use(fileUpload());
 app.use(
   cors({
     origin: ORIGIN,
-    allowedHeaders: "Content-Type,Authorization",
+    allowedHeaders: "Content-Type, Authorization",
     exposedHeaders: "Set-Cookie",
-    methods: "GET, POST ,PUT, DELETE",
+    methods: "GET, POST, PUT, DELETE",
     credentials: true,
   })
 );
+
 // Route Imports
 import model from "./routes/modelRoute.js";
 import user from "./routes/userRoute.js";
