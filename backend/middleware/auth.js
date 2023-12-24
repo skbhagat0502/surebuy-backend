@@ -5,7 +5,7 @@ import { User } from "../models/userModel.js";
 import { JWT_SECRET } from "../constants.js";
 
 export const isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
-  const { token } = req.cookies;
+  const token = req.header("authorization");
   console.log(token);
   if (!token) {
     return next(new ErrorHander("Please Login to access this resource", 401));
